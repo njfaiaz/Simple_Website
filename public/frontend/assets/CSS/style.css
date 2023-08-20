@@ -1,0 +1,120 @@
+/* Comon Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
+body {
+  /* background-color: gold; */
+}
+.bg-profile {
+  background-color: rgba(249, 215, 24, 0.36);
+}
+.text-primary {
+  color: gold !important;
+}
+.bg-primary {
+  background-color: gold !important;
+}
+.border-primary {
+  border-color: gold !important;
+}
+.font-xsm {
+  font-size: 14px !important;
+}
+.btn-primary {
+  background-color: gold !important;
+}
+
+/* Header */
+.navbar-brand {
+  background-color: white;
+  border-radius: 100%;
+  padding: 10px;
+}
+.navbar-brand img {
+  height: 63px;
+  width: 70px;
+}
+.navbar a:hover {
+  color: white;
+}
+.navbar .dropdown-menu .dropdown-item:hover {
+  background-color: gold;
+}
+.carousel-indicators .active {
+  background-color: gold;
+}
+.carousel-item,
+.carousel-item img {
+  height: 85vh;
+}
+
+/* BOD */
+.bod-description {
+  max-height: 210px; /* Set the desired height here */
+  overflow: hidden;
+  position: relative;
+}
+
+.show-more {
+  cursor: pointer;
+}
+
+
+
+/* Login */
+.top___logo{
+  width: 250px;
+  height: 100px;
+}
+
+
+/* Registration */
+.form-control___worng {
+  border: 1px solid rgb(223, 9, 9) !important;
+  color: rgb(223, 9, 9) !important;
+}
+
+#expireOdDate__Span,
+#joinedDate__Span {
+  background-color: white;
+  bottom: 10px;
+  left: 12px;
+}
+/* Profile */
+/* .profile__info li {
+  font-size: 12px;
+} */
+/* Footer */
+footer .menu a:hover {
+  color: white !important;
+}
+footer .social {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  text-decoration: none;
+}
+footer .social:hover {
+  background-color: black !important;
+  color: white !important;
+}
+
+@media screen and (max-width: 992px) {
+  .profile__info li {
+    font-size: 12px;
+  }
+  .profile__info li .input-group label,
+  .profile__info li .input-group span,
+  .profile__info li span,
+  .profile__info li .input-group input,
+  .profile__info li input,
+  .profile__info li .input-group select {
+    font-size: 12px !important;
+  }
+}
