@@ -5,7 +5,9 @@ Use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BordOfDeController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\JobApplyController;
 use App\Http\Controllers\Admin\MarqueeController;
+use App\Http\Controllers\Admin\OurProjectController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\IndexController;
@@ -96,6 +98,23 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth'],'namespace'=>'Ad
     Route::get('board/delete/{id}', [BordOfDeController::class, 'Delete'])->name('board.delete');
 
 
+    // ------------------------------ Admin Our Project  Page----------------------------------
+    Route::get('project', [OurProjectController::class, 'index'])->name('project');
+    Route::get('project/add', [OurProjectController::class, 'add'])->name('project.add');
+    Route::post('project/store', [OurProjectController::class, 'Store'])->name('project.store');
+    Route::get('project/edit/{id}', [OurProjectController::class, 'Edit'])->name('project.edit');
+    Route::post('project/update/{id}', [OurProjectController::class, 'Update'])->name('project.update');
+    Route::get('project/delete/{id}', [OurProjectController::class, 'Delete'])->name('project.delete');
+
+
+    // ------------------------------ Admin Job Apply Page----------------------------------
+    Route::get('jobView', [JobApplyController::class, 'JobView'])->name('job.view');
+    Route::get('download{file}', [JobApplyController::class, 'download'])->name('download');
+
+    // ------------------------------ Admin Site Setting Page----------------------------------
+    Route::get('jobView', [JobApplyController::class, 'JobView'])->name('job.view');
+    Route::get('download{file}', [JobApplyController::class, 'download'])->name('download');
+
 });
 
 
@@ -125,6 +144,9 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth'],'namespace'=>'User
 
 Route::get('/',[IndexController::class,'index'])->name('user.dashboard');
 Route::get('board/dec',[IndexController::class,'BoardOfDer'])->name('user.boardOf');
+Route::get('our/project',[IndexController::class,'OurProject'])->name('user.project');
+Route::get('job/apply',[IndexController::class,'jobApply'])->name('user.jobApply');
+Route::post('job/store',[JobApplyController::class,'jobStore'])->name('user.jobStore');
 
 
 

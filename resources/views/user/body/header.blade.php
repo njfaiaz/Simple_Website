@@ -14,45 +14,28 @@
                     <a class="nav-link px-4 fw-bold text-white active" aria-current="page" href="{{ route('user.dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link ms-4 ms-lg-0 fw-bold dropdown-toggle" href="./our-service.html"
-                        data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                        Our Service
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown">
-                            <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                                data-bs-auto-close="outside">Contracting </a>
-                            <ul class="dropdown-menu">
-                                <li> <a href="#" class="dropdown-item">A</a> </li>
-                                <li> <a href="#" class="dropdown-item">B</a> </li>
-                                <li> <a href="#" class="dropdown-item">C</a> </li>
-                                <li> <a href="#" class="dropdown-item">D</a> </li>
-                                <li> <a href="#" class="dropdown-item">E</a> </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-item dropdown-toggle " href="#" data-bs-toggle="dropdown"
-                                data-bs-auto-close="outside">Cleaning </a>
-                            <ul class="dropdown-menu">
-                                <li> <a href="#" class="dropdown-item">A</a> </li>
-                                <li> <a href="#" class="dropdown-item">B</a> </li>
-                                <li> <a href="#" class="dropdown-item">C</a> </li>
-                                <li> <a href="#" class="dropdown-item">D</a> </li>
-                                <li> <a href="#" class="dropdown-item">E</a> </li>
-                            </ul>
-                        </li>
-                        <li><a class="dropdown-item" href="#">Hospitality</a></li>
-                        <li><a class="dropdown-item" href="#">Trading</a></li>
-                        <li><a class="dropdown-item" href="#">Service</a></li>
-                        <li><a class="dropdown-item" href="#">Travel Agency</a></li>
-                        <li><a class="dropdown-item" href="#">Training</a></li>
-                        <li><a class="dropdown-item" href="#">Library Faculty</a></li>
-                        <li><a class="dropdown-item" href="#">Real Estate</a></li>
+                    @php
+                        $categories = App\Models\Category::orderBy('category_name','ASC')->limit(5)->get();
+                    @endphp
+                    @foreach ($categories as $category)
 
-                    </ul>
+                        <a class="nav-link ms-4 ms-lg-0 fw-bold dropdown-toggle" href="./our-service.html"
+                            data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                            {{ $category->category_name }}
+                        </a>
+                        @php
+                            $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name','ASC')->get();
+                        @endphp
+
+                        <ul class="dropdown-menu">
+                            @foreach ($subcategories as $subcategory)
+                                <li><a class="dropdown-item" href="#">{{ $subcategory->subcategory_name }}</a></li>
+                            @endforeach
+                        </ul>
+                    @endforeach
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-4 fw-bold" href="./our-project.html">Our Project</a>
+                    <a class="nav-link px-4 fw-bold" href="{{ route('user.project') }}">Our Project</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link px-4 fw-bold" href="{{ route('user.boardOf') }}">Board of Directors</a>
@@ -61,10 +44,7 @@
                     <a class="nav-link px-4 fw-bold" href="./inqueary.html">Inquiry </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-4 fw-bold" href="./jobApply.html">Job Apply </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link px-4 fw-bold" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link px-4 fw-bold" href="{{ route('user.jobApply') }}">Job Apply </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link ms-4 ms-lg-0 fw-bold dropdown-toggle" href="./our-service.html"

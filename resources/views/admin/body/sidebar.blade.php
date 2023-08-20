@@ -58,6 +58,19 @@
                 </ul>
             </li>
 
+            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Our Project</span></a>
+                <ul class="ml-menu">
+                    <li><a href="{{ route('project') }}">All Project</a></li>
+                    <li><a href="{{ route('project.add') }}">Add Project</a></li>
+                </ul>
+            </li>
+
+            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>All Job </span></a>
+                <ul class="ml-menu">
+                    <li><a href="{{ route('job.view') }}">All Project</a></li>
+                </ul>
+            </li>
+
 
         </ul>
     </div>
