@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ActiveUserController;
 use App\Http\Controllers\User\UserController;
 Use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BordOfDeController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\JobApplyController;
 use App\Http\Controllers\Admin\MarqueeController;
 use App\Http\Controllers\Admin\OurProjectController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\IndexController;
@@ -112,8 +114,16 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth'],'namespace'=>'Ad
     Route::get('download{file}', [JobApplyController::class, 'download'])->name('download');
 
     // ------------------------------ Admin Site Setting Page----------------------------------
-    Route::get('jobView', [JobApplyController::class, 'JobView'])->name('job.view');
-    Route::get('download{file}', [JobApplyController::class, 'download'])->name('download');
+    Route::get('setting', [SettingController::class, 'Setting'])->name('setting');
+    Route::post('setting/view', [SettingController::class, 'SettingView'])->name('setting.store');
+
+
+    // ------------------------------ Active User ----------------------------------
+    Route::get('all/user', [ActiveUserController::class, 'AllUser'])->name('all-user');
+
+    Route::get('userInactive', [ActiveUserController::class, 'vendorInactive'])->name('inactive.user');
+    Route::get('userActive', [ActiveUserController::class, 'vendorActive'])->name('active.user');
+
 
 });
 
